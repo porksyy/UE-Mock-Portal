@@ -1,2 +1,2 @@
 # UE-Mock-Portal
-Mock Enrollment Portal for University of the East - Manila
+Mock Enrollment Portal project of University of the East - Manila for Mobile and Web Development subject
