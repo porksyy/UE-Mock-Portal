@@ -33,7 +33,7 @@
     text-decoration: none;
     text-align: center;
     padding: 10px 15px;
-    color: black;
+    color: #4271c1;
     border-radius: 5px;
     font-weight: bold;
 }
@@ -46,4 +46,6 @@
     background-color: #fff;
     border: 1px solid #ccc;
     color: #000;
+
+    pointer-events: none;
 }
