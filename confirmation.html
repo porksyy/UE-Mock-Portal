@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>UE Mock Online Application</title>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/forms.css">
+
+        <!-- Fontawesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+        
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        
+        <style>
+            .captcha-box {
+                font-family: monospace;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #052d79;
+                background: #fffefe;
+                padding: 10px;
+                text-align: left;
+                margin-bottom: 10px;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="sidebar">
+            <img src="materials/UE.png" alt="uelogo">
+            <a href="https://www.ue.edu.ph/mla/"><h1>University of the East</h1></a>
+            <ul>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">Assessment Dates</a></li>
+                <li><a href="#">Admissions</a></li>
+            </ul>
+        </div>
+
+        <div class="main_content_form">
+            <div class="nav form_card">
+                <a href="#">Welcome</a>
+                <a href="#">Applicant</a>
+                <a href="#">Contact Info</a>
+                <a href="#">Previous School</a>
+                <a href="#" class="active">Confirmation</a>
+                <a href="#">Submit</a>
+            </div>
+
+            <div class="form_card">
+                <div id="applicanttype" data-applicanttype="T" class="header-section" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h4>Confirmation Form</h4>
+                    <i class="glyphicon glyphicon-file">
+                    </i> 
+                    <span style="font-size: 0.9rem; font-weight: bold; color: #555;">Application Form for College Level</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="examDate">Examination Date and Time:</label>
+                    <select id="examDate" name="examDate" class="form-control">
+                        <option value="">Select Date and Time</option>
+                        <optgroup label="December 2024">
+                            <option value="2024-12-13 09:00:00">12/13/2024 9:00 AM</option>
+                        </optgroup>
+                        <optgroup label="January 2025">
+                            <option value="2025-01-10 09:00:00">01/10/2025 9:00 AM</option>
+                            <option value="2025-01-11 09:00:00">01/11/2025 9:00 AM</option>
+                            <option value="2025-01-17 09:00:00">01/17/2025 9:00 AM</option>
+                            <option value="2025-01-18 09:00:00">01/18/2025 9:00 AM</option>
+                            <option value="2025-01-24 09:00:00">01/24/2025 9:00 AM</option>
+                            <option value="2025-01-25 09:00:00">01/25/2025 9:00 AM</option>
+                            <option value="2025-01-31 09:00:00">01/31/2025 9:00 AM</option>
+                        </optgroup>
+                        <br><br><br>
+                    </select>
+                    <br>
+                    <p>Reminder:</p>
+                    <ul>
+                        <li>Examination dates will be available once your application is verified.</li>
+                        <li>UE Students may already select preferred examination date and time.</li>
+                        <li>Be at the Admissions Office at least 30 minutes before your exam time.</li>
+                        <li>Bring Mongol pencil no. 2 and the Application Confirmation printout.</li>
+                    </ul>
+                </div>
+                <br><hr>
+                <div class="form-group">
+                    <label for="captcha">Anti-Spam Security:</label>
+                    <div id="captcha-display" class="captcha-box"></div>
+                    <br>  
+                    <label for="captcha">Type the characters you see above</label>
+                    <input type="text" id="captcha" name="captcha" placeholder="" class="form-control">
+                </div>
+                <br><br><hr><br>      
+                <form id="confirmationForm" onsubmit="return validateAndRedirect(event)">
+                    <!-- Other content... -->
+                    <div class="button-group">
+                        <button type="button" class="btn btn-warning" onclick="goBack()">Go Back</button>
+                        <button type="submit" class="btn btn-info">Next</button>
+                        <button type="button" class="btn btn-danger" onclick="cancelApplication()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function generateCaptcha() {
+                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                let captcha = "";
+                for (let i = 0; i < 6; i++) {
+                    captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                return captcha;
+            }
+
+            const captchaCode = generateCaptcha();
+            document.getElementById("captcha-display").textContent = captchaCode;
+
+            function validateForm() {
+                const examDate = document.getElementById("examDate").value;
+                const captcha = document.getElementById("captcha").value;
+        
+                if (examDate === "") {
+                    alert("Please select an examination date and time.");
+                    return false;
+                }
+        
+                if (captcha === "") {
+                    alert("Please enter the CAPTCHA code.");
+                    return false;
+                }
+
+                if (captcha !== captchaCode) {
+                    alert("Incorrect CAPTCHA. Please try again.");
+                    return false;
+                }
+        
+                return true;
+            }
+        </script>
+        
+        <form onsubmit="return validateForm()">
+            </form>
+
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <script>
+            // Go back to the previous page
+            function goBack() {
+                window.history.back(); // Navigates to the previous page in browser history
+            }
+        
+            // Validate the form and redirect to the submit form
+            function validateAndRedirect(event) {
+                event.preventDefault(); // Prevent default form submission
+        
+                if (validateForm()) {
+                    // Redirect to the submit form if validation passes
+                    window.location.href = "submit.html";
+                }
+            }
+        
+            // Cancel the application process (navigate to a specific page or show an alert)
+            function cancelApplication() {
+                const confirmCancel = confirm("Are you sure you want to cancel the application?");
+                if (confirmCancel) {
+                    window.location.href = "previous-school.html"; // Redirect to a home or starting page
+                }
+            }
+        </script>    
+
+    </body>
+</html>
