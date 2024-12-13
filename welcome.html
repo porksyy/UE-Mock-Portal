@@ -33,9 +33,9 @@
             <img src="materials/UE.png" alt="uelogo">
             <a href="https://www.ue.edu.ph/mla/"><h1>University of the East</h1></a>
             <ul>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">Assessment Dates</a></li>
-                <li><a href="#">Admissions</a></li>
+                <li><a href="#" data-bs-toggle="modal" data-bs-target="#coursesModal">Courses</a></li>
+                <li><a href="#" data-bs-toggle="modal" data-bs-target="#assessModal">Assessment Dates</a></li>
+                <li><a href="https://www.ue.edu.ph/mla/about-admission/">Admissions</a></li>
             </ul>
         </div>
 
@@ -75,6 +75,271 @@
                 </div>
             </footer>
         </div>
+
+        <!-- Courses Modal -->
+        <div class="modal fade" id="coursesModal" tabindex="-1" role="dialog" aria-labelledby="coursesModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="coursesModalLabel">Courses/Programs/Strands</h5>
+                        <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close" style="border: none; background-color: transparent;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="list-group" id="accordionCourses">
+                            <!-- College Level -->
+                            <button class="list-group-item list-group-item-action bg-primary text-white" data-bs-toggle="collapse" data-bs-target="#collegeCourses" aria-expanded="false" aria-controls="collegeCourses">
+                                First Semester, SY2025-2026 (College Level)
+                            </button>
+                            <div class="collapse" id="collegeCourses" data-bs-parent="#accordionCourses">
+                                <div class="card card-body" style="max-height: 300px; overflow-y: auto;">
+                                    <strong>COLLEGE OF ARTS AND SCIENCES</strong>
+                                    <ul>
+                                        <li>Bachelor of Arts in Broadcasting (B.A. BD.) (Manila)</li>
+                                        <li>Bachelor of Science in Biology (B.S. BI.) - Ecology and Biodiversity Track (Manila)</li>
+                                        <li>Bachelor of Science in Psychology (B.S. Psy.) (Manila, Caloocan)</li>
+                                        <li>Bachelor of Arts in International Studies (B.A.I.S.) (Manila)</li>
+                                        <li>Bachelor of Arts in Political Science (B.A.P.S.) (Manila)</li>
+                                        <li>Bachelor of Science in Biology (B.S. BI.) (Ecology and Biodiversity Track) (Manila)</li>
+                                        <li>Bachelor of Science in Biology (B.S. BI.) (Medical Biology Track) (Manila)</li>
+                                        <li>Bachelor of Science in Criminology with specialization in Cybersecurity (Caloocan)</li>
+                                        <li>Bachelor of Science in Hospitality Management (B.S.H.M.) (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Legal Management (B.S.L.M.) (Manila)</li>
+                                        <li>Bachelor of Science in Psychology (B.S. Psy.) (Manila, Caloocan)</li>
+                                    </ul>
+                                    <strong>COLLEGE OF BUSINESS ADMINISTRATION</strong>
+                                    <ul>
+                                        <li>Bachelor of Science in Accountancy (B.S.A.) (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Business Administration (B.S.B.A.) Major in Business Management (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Business Administration (B.S.B.A.) major in Financial Management (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Business Administration (B.S.B.A.) major in Marketing Management (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Management Accounting (B.S.M.A.) (Manila, Caloocan)</li>  
+                                    </ul>
+                                    <strong>COLLEGE OF COMPUTER STUDIES AND SYSTEMS</strong>
+                                    <ul>
+                                        <li>Bachelor of Science in Computer Science (B.S.C.S.) (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Data Science (BSDS)  (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Entertainment and Multimedia Computing (B.S.E.M.C.) with Specialization in Digital Animation (Manila)</li>
+                                        <li>Bachelor of Science in Entertainment and Multimedia Computing (B.S.E.M.C.) with Specialization in Game Development (Manila)</li>
+                                        <li>Bachelor of Science in Information Technology  (B.S.I.T.) (Manila, Caloocan)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Senior High School -->
+                            <button class="list-group-item list-group-item-action bg-success text-white" data-bs-toggle="collapse" data-bs-target="#seniorHighCourses" aria-expanded="false" aria-controls="seniorHighCourses">
+                                First Semester, SY2025-2026 (Senior High School)
+                            </button>
+                            <div class="collapse" id="seniorHighCourses" data-bs-parent="#accordionCourses">
+                                <div class="card card-body" style="max-height: 300px; overflow-y: auto;">
+                                    <strong>Tech. Voc. & Livelihood Track</strong>
+                                    <ul>
+                                        <li>Information & Communications Technology 3 (Manila, Caloocan)</li>
+                                    </ul>
+                                    <strong>Academic Track</strong>
+                                    <ul>
+                                        <li>Accountancy, Business and Management Strand (Manila, Caloocan)</li>
+                                        <li>General Academic Strand (Manila, Caloocan)</li>
+                                    </ul>  
+                                    <strong>Sports Track</strong>
+                                    <ul>
+                                        <li>Sports Track (ST) (Manila)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Second Semester -->
+                            <button class="list-group-item list-group-item-action bg-danger text-white" data-bs-toggle="collapse" data-bs-target="#secondSemCourses" aria-expanded="false" aria-controls="secondSemCourses">
+                                Second Semester, SY2024-2025 (College Level)
+                            </button>
+                            <div class="collapse" id="secondSemCourses" data-bs-parent="#accordionCourses">
+                                <div class="card card-body" style="max-height: 300px; overflow-y: auto;">
+                                    <strong>COLLEGE OF ARTS AND SCIENCES</strong>
+                                    <ul>
+                                        <li>Bachelor of Arts in Broadcasting (B.A. BD.) (Manila)</li>
+                                        <li>Bachelor of Science in Biology (B.S. BI.) - Ecology and Biodiversity Track (Manila)</li>
+                                        <li>Bachelor of Science in Psychology (B.S. Psy.) (Manila, Caloocan)</li>
+                                        <li>Bachelor of Arts in International Studies (B.A.I.S.) (Manila)</li>
+                                        <li>Bachelor of Arts in Political Science (B.A.P.S.) (Manila)</li>
+                                        <li>Bachelor of Science in Biology (B.S. BI.) (Ecology and Biodiversity Track) (Manila)</li>
+                                        <li>Bachelor of Science in Biology (B.S. BI.) (Medical Biology Track) (Manila)</li>
+                                        <li>Bachelor of Science in Criminology with specialization in Cybersecurity (Caloocan)</li>
+                                        <li>Bachelor of Science in Hospitality Management (B.S.H.M.) (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Legal Management (B.S.L.M.) (Manila)</li>
+                                        <li>Bachelor of Science in Psychology (B.S. Psy.) (Manila, Caloocan)</li>
+                                    </ul>
+                                    <strong>COLLEGE OF BUSINESS ADMINISTRATION</strong>
+                                    <ul>
+                                        <li>Bachelor of Science in Accountancy (B.S.A.) (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Business Administration (B.S.B.A.) Major in Business Management (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Business Administration (B.S.B.A.) major in Financial Management (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Business Administration (B.S.B.A.) major in Marketing Management (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Management Accounting (B.S.M.A.) (Manila, Caloocan)</li>  
+                                    </ul>
+                                    <strong>COLLEGE OF COMPUTER STUDIES AND SYSTEMS</strong>
+                                    <ul>
+                                        <li>Bachelor of Science in Computer Science (B.S.C.S.) (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Data Science (BSDS)  (Manila, Caloocan)</li>
+                                        <li>Bachelor of Science in Entertainment and Multimedia Computing (B.S.E.M.C.) with Specialization in Digital Animation (Manila)</li>
+                                        <li>Bachelor of Science in Entertainment and Multimedia Computing (B.S.E.M.C.) with Specialization in Game Development (Manila)</li>
+                                        <li>Bachelor of Science in Information Technology  (B.S.I.T.) (Manila, Caloocan)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p class="text-muted small">
+                            <strong>NOTE:</strong> For Dentistry Masteral Programs, Law, Graduate School, Elementary and Junior High School, please see the Dean/Principal for Admission requirements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Assessments Modal -->
+        <div class="modal fade" id="assessModal" tabindex="-1" role="dialog" aria-labelledby="assessModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="assessModalLabel">Assessment Dates (UE CET and UE CAIA)</h5>
+                        <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="Close" style="border: none; background-color: transparent;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="accordion" id="assessmentAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDec2024">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDec2024" aria-expanded="true" aria-controls="collapseDec2024">
+                                        December 2024
+                                    </button>
+                                </h2>
+                                <div id="collapseDec2024" class="accordion-collapse collapse show" aria-labelledby="headingDec2024" data-bs-parent="#assessmentAccordion">
+                                    <div class="accordion-body">
+                                        <table class="table table-bordered text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th rowspan="2">Time</th>
+                                                    <th colspan="2">Manila Campus</th>
+                                                    <th colspan="2">Caloocan Campus</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>College</th>
+                                                    <th>Senior High</th>
+                                                    <th>College</th>
+                                                    <th>Senior High</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>12/13/2024</td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingJan2025">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseJan2025" aria-expanded="false" aria-controls="collapseJan2025">
+                                        January 2025
+                                    </button>
+                                </h2>
+                                <div id="collapseJan2025" class="accordion-collapse collapse" aria-labelledby="headingJan2025" data-bs-parent="#assessmentAccordion">
+                                    <div class="accordion-body">
+                                        <table class="table table-bordered text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th rowspan="2">Time</th>
+                                                    <th colspan="2">Manila Campus</th>
+                                                    <th colspan="2">Caloocan Campus</th>
+                                                    
+                                                </tr>
+
+                                                <tr>
+                                                    <th>College</th>
+                                                    <th>Senior High</th>
+                                                    <th>College</th>
+                                                    <th>Senior High</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>01/10/2025</strong></td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><strong>01/11/2025</strong></td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><strong>01/17/2025</strong></td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><strong>01/18/2025</strong></td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><strong>01/24/2025 - 01/25/2025</strong></td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><strong>01/31/2025</strong></td>
+                                                    <td>9:00 AM</td>
+                                                    <td>2:00 PM</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <p class="text-muted small">
+                            Selection of examination dates will be available once the application has been verified. Only applications with uploaded proof of payment will be processed. UE JHS and SHS students are exempted from the payment of application fee.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Bootstrap JavaScript Libraries -->
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
