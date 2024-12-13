@@ -227,13 +227,12 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
 
             <footer>
                 <div class="btnfooter d-flex justify-content-between">
-                    <button class="nextbtn" type="button"><a href="contact.html">Next</a></button>
+                    <button class="nextbtn" type="button" onclick="saveApplicantData()"><a href="contact.html">Next</a></button>
                     <button class="clsbtn bg-primary" type="button" ><a href="index.html">Cancel</a></button>
                 </div>
             </footer>
@@ -562,7 +561,7 @@
             }
             });
 
-            form.addEventListener('submit', (event) => {
+            form.addEventListener('nextbtn', (event) => {
             let allValid = true;
 
             requiredFields.forEach((fieldId) => {
@@ -585,6 +584,22 @@
             }
             `;
             document.head.appendChild(style);
+
+            function saveApplicantData() {
+                const lastName = document.getElementById("lastName").value;
+                const firstName = document.getElementById("firstName").value;
+                const middleName = document.getElementById("middleName").value;
+                const program = document.getElementById("program").value;
+                const campus = document.getElementById("campus").value;
+                const classStatus = document.getElementById("classStatus").value;
+        
+                localStorage.setItem("lastName", lastName);
+                localStorage.setItem("firstName", firstName);
+                localStorage.setItem("middleName", middleName);
+                localStorage.setItem("program", program);
+                localStorage.setItem("campus", campus);
+                localStorage.setItem("classStatus", classStatus);
+            }
 
         </script>
 

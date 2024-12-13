@@ -73,7 +73,7 @@
 
                 <div class="form-group">
                     <label for="examDate">Examination Date and Time:</label>
-                    <select id="examDate" name="examDate" class="form-control">
+                    <select id="examDate" name="examDate" class="form-control" onchange="saveConfirmationData()">
                         <option value="">Select Date and Time</option>
                         <optgroup label="December 2024">
                             <option value="2024-12-13 09:00:00">12/13/2024 9:00 AM</option>
@@ -110,7 +110,7 @@
                 <form id="confirmationForm" onsubmit="return validateAndRedirect(event)">
                     <div class="button-group">
                         <button type="button" class="btn btn-warning" onclick="goBack()">Go Back</button>
-                        <button type="submit" class="btn btn-info">Next</button>
+                        <button type="submit" class="btn btn-info" onclick="window.location.href='submit.html'">Next</button>
                         <button type="button" class="btn btn-danger" onclick="cancelApplication()">Cancel</button>
                     </div>
                 </form>
@@ -192,6 +192,12 @@
                     window.location.href = "index.html"; // Redirect to a home or starting page
                 }
             }
+
+            function saveConfirmationData() {
+                const examDate = document.getElementById("examDate").value;
+                localStorage.setItem("examDate", examDate);
+            }
+
         </script>    
 
     </body>

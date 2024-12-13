@@ -70,7 +70,7 @@
                     <!-- code -->
                     <div class="mb-3">
                         <label for="school-code" class="form-label">School Code *</label>
-                        <input type="tel" class="form-control" id="school-code" required>
+                        <input type="tel" class="form-control" id="school-code"  maxlength="6" required>
                     </div>
                     
 
@@ -83,7 +83,7 @@
                     <!-- contact -->
                     <div class="mb-3">
                         <label for="school-phone" class="form-label">School Contact Number</label>
-                        <input type="text" class="form-control" id="school-phone" required>
+                        <input type="text" class="form-control" id="school-phone" maxlength="11" required>
                     </div>
 
                     <!-- email -->
@@ -94,7 +94,7 @@
 
                     <!-- form 137 -->
                     <div class="mb-3">
-                        <label for="transcript" class="form-label">Upload Transcript of Records</label>
+                        <label for="transcript" class="form-label">Upload Transcript of Records *</label>
                         <input type="file" class="form-control" id="transcript" required>
                     </div>
 
@@ -102,19 +102,59 @@
             </div>
             <footer>
                 <div class="btnfooter d-flex justify-content-between">
-                    <button class="nextbtn" type="button"><a href="contact.html">Next</a></button>
-                    <button class="clsbtn bg-primary" type="button"><a href="index.html">Cancel</a></button>
+                    <button class="nextbtn" type="button"><a href="confirmation.html">Next</a></button>
+                    <button class="clsbtn bg-primary" type="button" onclick="cancelApplication()"><a href="index.html">Cancel</a></button>
                 </div>
             </footer>
         </div>
 
         <script>
-            // Function to validate the form
+            const schoolCodeRegex = /^\d{6}$/; // Validates exactly 6 digits
+            const mobileRegex = /^[0-9]{11}$/;
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            // school code validation
+            function validateSchoolCode() {
+                const schoolCode = document.getElementById('school-code').value.trim();
+                if (!schoolCodeRegex.test(schoolCode)) {
+                    document.getElementById('school-code').classList.add('is-invalid');
+                    return false;
+                } else {
+                    document.getElementById('school-code').classList.remove('is-invalid');
+                    return true;
+                }
+            }
+
+            // scool contact num
+            function validateSchoolPhone() {
+                const schoolPhone = document.getElementById('school-phone').value.trim();
+                if (!mobileRegex.test(schoolPhone)) {
+                    document.getElementById('school-phone').classList.add('is-invalid');
+                    return false;
+                } else {
+                    document.getElementById('school-phone').classList.remove('is-invalid');
+                    return true;
+                }
+            }
+
+            // school email address
+            function validateSchoolEmail() {
+                const schoolEmail = document.getElementById('school-email').value.trim();
+                if (!emailRegex.test(schoolEmail)) {
+                    document.getElementById('school-email').classList.add('is-invalid');
+                    return false;
+                } else {
+                    document.getElementById('school-email').classList.remove('is-invalid');
+                    return true;
+                }
+            }
+
+            
             function validatePreviousSchoolForm() {
                 const form = document.getElementById('previous-school-form');
                 const requiredFields = form.querySelectorAll('[required]');
                 let isValid = true;
-        
+
                 requiredFields.forEach(field => {
                     if (!field.value.trim()) {
                         isValid = false;
@@ -123,29 +163,48 @@
                         field.classList.remove('is-invalid');
                     }
                 });
-        
+
+                if (!validateSchoolCode()) {
+                    isValid = false;
+                }
+                if (!validateSchoolPhone()) {
+                    isValid = false;
+                }
+                if (!validateSchoolEmail()) {
+                    isValid = false;
+                }
+
                 return isValid;
             }
-        
-            document.getElementById('next-btn').addEventListener('click', function() {
+
+          
+            document.querySelector('.nextbtn').addEventListener('click', function(event) {
+                event.preventDefault();
                 if (validatePreviousSchoolForm()) {
                     window.location.href = 'confirmation.html';
                 } else {
-                    alert('Please fill out all required fields.');
+                    alert('Please fill out all required fields or check for incorrect inputs.');
                 }
             });
-        
-            document.getElementById('back-btn').addEventListener('click', function() {
-                window.location.href = 'contact.html';
-            });
-        
+
+            document.querySelector('.clsbtn').addEventListener('click', cancelApplication);
+
             function limitInput(inputId, maxLength) {
                 document.getElementById(inputId).addEventListener('input', function() {
                     this.value = this.value.slice(0, maxLength);
                 });
             }
-                    limitInput('school-code', 6);
-            limitInput('school-phone', 11); 
+
+            limitInput('school-code', 6);
+            limitInput('school-phone', 11);
+
+            function cancelApplication() {
+                const confirmCancel = confirm("Are you sure you want to cancel the application?");
+                if (confirmCancel) {
+                    window.location.href = "index.html";
+                }
+            }
+
         </script>
     </body>
 </html>

@@ -174,7 +174,7 @@
         </div>
         <footer>
             <div class="btnfooter d-flex justify-content-between">
-                <button id="nextbtn" class="nextbtn" type="button"><a href="confirmation.html">Next</a></button>
+                <button class="nextbtn" type="button" onclick="saveContactData()"><a href="previous-school.html">Next</a></button>
                 <button class="clsbtn bg-primary" type="button" onclick="cancelApplication()"><a href="index.html">Cancel</a></button>
             </div>
         </footer>
@@ -186,6 +186,7 @@
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const zipCodeRegex = /^\d{4}$/; // Validates exactly 4 digits
 
+        // Validation for ZIP Code
         function validateZipCode() {
             const zipCode = document.getElementById('zip-code').value.trim();
             if (!zipCodeRegex.test(zipCode)) {
@@ -197,7 +198,8 @@
             }
         }
 
-        function validateContactAndTel() { // contact num and tel num validation
+        // Validation for Contact Numbers
+        function validateContactAndTel() {
             const mobileNumber = document.getElementById('mobile-number').value.trim();
             const telNumber = document.getElementById('tel-number').value.trim();
             let isValid = true;
@@ -209,7 +211,7 @@
                 document.getElementById('mobile-number').classList.remove('is-invalid');
             }
 
-            if (telNumber && !telRegex.test(telNumber)) { // check only if entered
+            if (telNumber && !telRegex.test(telNumber)) { // Check only if entered
                 isValid = false;
                 document.getElementById('tel-number').classList.add('is-invalid');
             } else {
@@ -219,6 +221,30 @@
             return isValid;
         }
 
+        // parent Contacts
+        function validateParentContacts() {
+            const fathersContact = document.getElementById('fathers-contact').value.trim();
+            const mothersContact = document.getElementById('mothers-contact').value.trim();
+            let isValid = true;
+
+            if (fathersContact && !mobileRegex.test(fathersContact)) { // Check only if entered
+                isValid = false;
+                document.getElementById('fathers-contact').classList.add('is-invalid');
+            } else {
+                document.getElementById('fathers-contact').classList.remove('is-invalid');
+            }
+
+            if (mothersContact && !mobileRegex.test(mothersContact)) { // Check only if entered
+                isValid = false;
+                document.getElementById('mothers-contact').classList.add('is-invalid');
+            } else {
+                document.getElementById('mothers-contact').classList.remove('is-invalid');
+            }
+
+            return isValid;
+        }
+
+        // email val
         function validateEmail() {
             const email = document.getElementById('email-address').value.trim();
             if (!emailRegex.test(email)) {
@@ -230,11 +256,12 @@
             }
         }
 
+        // main form Validation
         function validateForm() {
             const form = document.getElementById('contact-form');
             const requiredFields = form.querySelectorAll('[required]');
             let isValid = true;
-        
+
             requiredFields.forEach(field => {
                 if (!field.value.trim()) {
                     isValid = false;
@@ -243,7 +270,11 @@
                     field.classList.remove('is-invalid');
                 }
             });
+
             if (!validateContactAndTel()) {
+                isValid = false;
+            }
+            if (!validateParentContacts()) { // Add parent contact validation
                 isValid = false;
             }
             if (!validateEmail()) {
@@ -252,12 +283,11 @@
             if (!validateZipCode()) {
                 isValid = false;
             }
-        
+
             return isValid;
         }
-        
 
-        
+        // perm address
         document.getElementById('use-same-address').addEventListener('change', function() {
             const permSection = document.getElementById('perma-address-section');
             const permAddressInput = document.getElementById('permanent-address');
@@ -278,7 +308,9 @@
 
         limitInput('mobile-number', 11);
         limitInput('tel-number', 9);
-        limitInput('zip-code', 4)
+        limitInput('zip-code', 4);
+        limitInput('fathers-contact', 11);
+        limitInput('mothers-contact', 11);
 
         document.getElementById('nextbtn').addEventListener('click', function(event) {
             event.preventDefault();
@@ -288,14 +320,19 @@
                 alert("Please fill out all required fields or check for incorrect inputs.");
             }
         });
-        
+
+        function saveContactData() {
+            const email = document.getElementById("email").value;
+            localStorage.setItem("email", email);
+        }
 
         function cancelApplication() {
             const confirmCancel = confirm("Are you sure you want to cancel the application?");
             if (confirmCancel) {
-                window.location.href = "index.html"; // Redirect to a home or starting page
+                window.location.href = "index.html"; // 
             }
         }
+
     </script>
 </body>
 </html>
