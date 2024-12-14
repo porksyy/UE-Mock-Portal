@@ -46,13 +46,13 @@
                 <!-- Basic Info Fields -->
                 <div class="mb-3">
                     <label for="surname" class="form-label">Surname (Last Name) *</label>
-                    <input type="text" class="form-control" id="surname" placeholder="Surname/Last name">
+                    <input type="text" class="form-control" id="surname" placeholder="Surname/Last name" required>
                     <small class="form-text text-muted">Ex. DELA CRUZ</small>
                 </div>
 
                 <div class="mb-3">
                     <label for="givenName" class="form-label">Complete Given Name *</label>
-                    <input type="text" class="form-control" id="givenName" placeholder="Given Name/First name">
+                    <input type="text" class="form-control" id="givenName" placeholder="Given Name/First name" required>
                     <small class="form-text text-muted">Ex. JUAN JR</small>
                 </div>
 
@@ -66,8 +66,8 @@
                     <label for="dob" class="form-label">Date of Birth *</label>
                     <div class="row">
                         <div class="col">
-                            <select class="form-select" id="dobDay">
-                                <option selected>Day</option>
+                            <select class="form-select" id="dobDay" required>
+                                <option selected disabled value="">Day</option>
                                 <!-- Days 1-31 -->
                                 <script>
                                     for (let i = 1; i <= 31; i++) {
@@ -77,8 +77,8 @@
                             </select>
                         </div>
                         <div class="col">
-                            <select class="form-select" id="dobMonth">
-                                <option selected>Month</option>
+                            <select class="form-select" id="dobMonth" required>
+                                <option selected disabled value="">Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
                                 <option value="3">March</option>
@@ -94,8 +94,8 @@
                             </select>
                         </div>
                         <div class="col">
-                            <select class="form-select" id="dobYear">
-                                <option selected>Year</option>
+                            <select class="form-select" id="dobYear" required>
+                                <option selected disabled value="">Year</option>
                                 <!-- Years 1900-Present -->
                                 <script>
                                     const currentYear = new Date().getFullYear();
@@ -111,8 +111,8 @@
                 <!-- Citizenship -->
                 <div class="mb-3">
                     <label for="citizenship" class="form-label">Citizenship *</label>
-                    <select class="form-select" id="citizenship">
-                        <option value="select" selected hidden>Select Citizenship</option>
+                    <select class="form-select" id="citizenship" required>
+                        <option value="select" disabled hidden>Select Citizenship</option>
                         <option value="filipino">Filipino</option>
                         <option value="american">American</option>
                         <option value="canadian">Canadian</option>
@@ -130,8 +130,8 @@
                 <!-- Gender -->
                 <div class="mb-3">
                     <label for="gender" class="form-label">Sex/Gender *</label>
-                    <select class="form-select" id="gender">
-                        <option value="select" selected hidden>Select Gender</option>
+                    <select class="form-select" id="gender" required>
+                        <option value="select" disabled hidden>Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="others">Others</option>
@@ -142,7 +142,7 @@
                 <div class="mb-3">
                     <label for="religion" class="form-label">Religion</label>
                     <select class="form-select" id="religion">
-                        <option value="select" selected hidden>Select Religion</option>
+                        <option value="select" disabled hidden>Select Religion</option>
                         <option value="catholic">Catholic</option>
                         <option value="islam">Islam</option>
                         <option value="protestant">Protestant</option>
@@ -160,8 +160,8 @@
                 <!-- Semester -->
                 <div class="mb-3">
                     <label for="semester" class="form-label">Semester *</label>
-                    <select class="form-select" id="semester">
-                        <option value="select" selected hidden>Select Semester</option>
+                    <select class="form-select" id="semester" required>
+                        <option value="select" disabled hidden>Select Semester</option>
                         <option value="1st">1st</option>
                         <option value="2nd">2nd</option>
                     </select>
@@ -170,8 +170,8 @@
                 <!-- Admission Type -->
                 <div class="mb-3">
                     <label for="admission" class="form-label">Seeking Admission As *</label>
-                    <select class="form-select" id="admission">
-                        <option value="select" selected hidden >Choose Admission Type</option>
+                    <select class="form-select" id="admission" required>
+                        <option value="select" disabled hidden>Choose Admission Type</option>
                         <option value="freshman">Freshman</option>
                         <option value="transferee">Transferee</option>
                     </select>
@@ -181,7 +181,7 @@
                 <div class="mb-3">
                     <label for="strand" class="form-label">Senior High School Strand</label>
                     <select class="form-select" id="strand">
-                        <option value="select" selected hidden>Select Strand</option>
+                        <option value="select" disabled hidden>Select Strand</option>
                         <optgroup label="Tech. Voc. & Livelihood Track">
                             <option value="ict">Information & Communications Technology</option>
                         </optgroup>
@@ -198,8 +198,8 @@
                 <!-- Course/Degree Program -->
                 <div class="mb-3">
                     <label for="course" class="form-label">Course/Degree Program *</label>
-                    <select class="form-select" id="course">
-                        <option value="select" selected hidden>Select Course</option>
+                    <select class="form-select" id="course" required>
+                        <option value="select" disabled hidden>Select Course</option>
                         <optgroup label="College of Arts and Sciences">
                             <option value="broadcasting">Bachelor of Arts in Broadcasting</option>
                             <option value="psychology">Bachelor of Science in Psychology</option>
@@ -220,8 +220,8 @@
                 <!-- Campus -->
                 <div class="mb-3">
                     <label for="campus" class="form-label">Campus *</label>
-                    <select class="form-select" id="campus">
-                        <option value="select" selected hidden>Select Campus</option>
+                    <select class="form-select" id="campus" required>
+                        <option value="select" disabled hidden>Select Campus</option>
                         <option value="manila">Manila</option>
                         <option value="caloocan">Caloocan</option>
                     </select>
@@ -513,94 +513,67 @@
             crossorigin="anonymous"
         ></script>
 
-        <!-- Basic Input Validation -->
-
         <script>
             const form = document.querySelector('form');
             const requiredFields = [
-            'surname',
-            'givenName',
-            'dobDay',
-            'dobMonth',
-            'dobYear',
-            'citizenship',
-            'gender',
-            'religion',  //
-            'semester',
-            'admission',
-            'course',
-            'campus',
+                'surname',
+                'givenName',
+                'dobDay',
+                'dobMonth',
+                'dobYear',
+                'citizenship',
+                'gender',
+                'semester',
+                'admission',
+                'course',
+                'campus',
             ];
-
+        
             function validateField(fieldId) {
-            const field = document.getElementById(fieldId);
-            const fieldValue = field.value.trim();
-
-            if (
-                !fieldValue ||  
-                fieldValue === 'select' || 
-                fieldValue === 'Day' ||     
-                fieldValue === 'Month' ||   
-                fieldValue === 'Year'       
-            ) {
-                field.classList.add('is-invalid'); 
-                return false;
-            }
-
-            field.classList.remove('is-invalid'); 
-            return true;
-            }
-
-            requiredFields.forEach((fieldId) => {
-            const field = document.getElementById(fieldId);
-
-            if (field) {
-                if (field.tagName === 'SELECT' || field.tagName === 'INPUT') {
-                field.addEventListener('change', () => validateField(fieldId));
+                const field = document.getElementById(fieldId);
+                const fieldValue = field.value.trim();
+        
+                if (!fieldValue || fieldValue === 'select' || fieldValue === '' ||
+                    fieldValue === 'Day' || fieldValue === 'Month' || fieldValue === 'Year') {
+                    field.classList.add('is-invalid');
+                    return false;
                 }
+        
+                field.classList.remove('is-invalid');
+                return true;
             }
-            });
-
-            form.addEventListener('nextbtn', (event) => {
-            let allValid = true;
-
+        
+            
             requiredFields.forEach((fieldId) => {
-                const isValid = validateField(fieldId);
-                if (!isValid) {
-                allValid = false;
+                const field = document.getElementById(fieldId);
+                if (field) {
+                    field.addEventListener('change', () => validateField(fieldId));
                 }
             });
-
-            if (!allValid) {
-                event.preventDefault();
-                alert('Please fill out all required fields correctly.');
-            }
+        
+            form.addEventListener('submit', (event) => {
+                let allValid = true;
+        
+                requiredFields.forEach((fieldId) => {
+                    const isValid = validateField(fieldId);
+                    if (!isValid) {
+                        allValid = false;
+                    }
+                });
+        
+                if (!allValid) {
+                    event.preventDefault();
+                    alert('Please fill out all required fields correctly.');
+                }
             });
-
+        
             const style = document.createElement('style');
             style.innerHTML = `
-            .is-invalid {
-                border: 2px solid red;  /* Highlight invalid fields with a red border */
-            }
+                .is-invalid {
+                    border: 2px solid red; /* Highlight invalid fields with a red border */
+                }
             `;
             document.head.appendChild(style);
-
-            function saveApplicantData() {
-                const lastName = document.getElementById("lastName").value;
-                const firstName = document.getElementById("firstName").value;
-                const middleName = document.getElementById("middleName").value;
-                const program = document.getElementById("program").value;
-                const campus = document.getElementById("campus").value;
-                const classStatus = document.getElementById("classStatus").value;
-        
-                localStorage.setItem("lastName", lastName);
-                localStorage.setItem("firstName", firstName);
-                localStorage.setItem("middleName", middleName);
-                localStorage.setItem("program", program);
-                localStorage.setItem("campus", campus);
-                localStorage.setItem("classStatus", classStatus);
-            }
-
         </script>
 
     </body>

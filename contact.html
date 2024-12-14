@@ -223,26 +223,27 @@
 
         // parent Contacts
         function validateParentContacts() {
-            const fathersContact = document.getElementById('fathers-contact').value.trim();
-            const mothersContact = document.getElementById('mothers-contact').value.trim();
             let isValid = true;
-
-            if (fathersContact && !mobileRegex.test(fathersContact)) { // Check only if entered
+        
+            const fathersContact = document.getElementById('fathers-contact').value.trim();
+            if (!fathersContact || !mobileRegex.test(fathersContact)) {
                 isValid = false;
                 document.getElementById('fathers-contact').classList.add('is-invalid');
             } else {
                 document.getElementById('fathers-contact').classList.remove('is-invalid');
             }
-
-            if (mothersContact && !mobileRegex.test(mothersContact)) { // Check only if entered
+        
+            const mothersContact = document.getElementById('mothers-contact').value.trim();
+            if (!mothersContact || !mobileRegex.test(mothersContact)) {
                 isValid = false;
                 document.getElementById('mothers-contact').classList.add('is-invalid');
             } else {
                 document.getElementById('mothers-contact').classList.remove('is-invalid');
             }
-
+        
             return isValid;
         }
+        
 
         // email val
         function validateEmail() {
@@ -257,11 +258,22 @@
         }
 
         // main form Validation
+        document.querySelector('.nextbtn').addEventListener('click', function (event) {
+            event.preventDefault(); // 
+            if (validateForm()) {
+                saveContactData(); 
+                window.location.href = 'previous-school.html'; 
+            } else {
+                alert('Please fill out all required fields correctly.');
+            }
+        });
+        
         function validateForm() {
             const form = document.getElementById('contact-form');
             const requiredFields = form.querySelectorAll('[required]');
             let isValid = true;
-
+        
+            // Validate required fields
             requiredFields.forEach(field => {
                 if (!field.value.trim()) {
                     isValid = false;
@@ -270,20 +282,12 @@
                     field.classList.remove('is-invalid');
                 }
             });
-
-            if (!validateContactAndTel()) {
-                isValid = false;
-            }
-            if (!validateParentContacts()) { // Add parent contact validation
-                isValid = false;
-            }
-            if (!validateEmail()) {
-                isValid = false;
-            }
-            if (!validateZipCode()) {
-                isValid = false;
-            }
-
+        
+            if (!validateContactAndTel()) isValid = false;
+            if (!validateParentContacts()) isValid = false;
+            if (!validateEmail()) isValid = false;
+            if (!validateZipCode()) isValid = false;
+        
             return isValid;
         }
 
@@ -329,7 +333,7 @@
         function cancelApplication() {
             const confirmCancel = confirm("Are you sure you want to cancel the application?");
             if (confirmCancel) {
-                window.location.href = "index.html"; // 
+                window.location.href = "index.html"; // Redirect to a home or starting page
             }
         }
 

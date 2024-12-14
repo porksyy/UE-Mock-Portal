@@ -73,7 +73,7 @@
 
                 <div class="form-group">
                     <label for="examDate">Examination Date and Time:</label>
-                    <select id="examDate" name="examDate" class="form-control" onchange="saveConfirmationData()">
+                    <select id="examDate" name="examDate" class="form-control" onchange="saveExamDate()" required>
                         <option value="">Select Date and Time</option>
                         <optgroup label="December 2024">
                             <option value="2024-12-13 09:00:00">12/13/2024 9:00 AM</option>
@@ -89,6 +89,7 @@
                         </optgroup>
                         <br><br><br>
                     </select>
+                    <span id="examDate-error" class="error-text" style="color: red; font-size: 0.9rem;"></span>
                     <br>
                     <p>Reminder:</p>
                     <ul>
@@ -102,15 +103,15 @@
                 <div class="form-group">
                     <label for="captcha">Anti-Spam Security:</label>
                     <div id="captcha-display" class="captcha-box"></div>
-                    <br>  
-                    <label for="captcha">Type the characters you see above</label>
                     <input type="text" id="captcha" name="captcha" placeholder="" class="form-control">
+                    <span id="captcha-error" class="error-text" style="color: red; font-size: 0.9rem;"></span>
                 </div>
                 <br><br><hr><br>      
                 <form id="confirmationForm" onsubmit="return validateAndRedirect(event)">
+                    <!-- Other content... -->
                     <div class="button-group">
                         <button type="button" class="btn btn-warning" onclick="goBack()">Go Back</button>
-                        <button type="submit" class="btn btn-info" onclick="window.location.href='submit.html'">Next</button>
+                        <button type="submit" class="btn btn-info">Next</button>
                         <button type="button" class="btn btn-danger" onclick="cancelApplication()">Cancel</button>
                     </div>
                 </form>
@@ -131,26 +132,33 @@
             document.getElementById("captcha-display").textContent = captchaCode;
 
             function validateForm() {
-                const examDate = document.getElementById("examDate").value;
-                const captcha = document.getElementById("captcha").value;
+            // Reset error messages
+            document.getElementById("examDate-error").textContent = "";
+            document.getElementById("captcha-error").textContent = "";
         
-                if (examDate === "") {
-                    alert("Please select an examination date and time.");
-                    return false;
-                }
+            let isValid = true;
         
-                if (captcha === "") {
-                    alert("Please enter the CAPTCHA code.");
-                    return false;
-                }
-
-                if (captcha !== captchaCode) {
-                    alert("Incorrect CAPTCHA. Please try again.");
-                    return false;
-                }
-        
-                return true;
+            // Validate Examination Date
+            const examDate = document.getElementById("examDate").value;
+            if (examDate === "") {
+                document.getElementById("examDate-error").textContent = "Please select an examination date and time.";
+                isValid = false;
             }
+        
+            // Validate CAPTCHA
+            const captcha = document.getElementById("captcha").value;
+            const captchaCode = document.getElementById("captcha-display").textContent;
+        
+            if (captcha === "") {
+                document.getElementById("captcha-error").textContent = "Please enter the CAPTCHA code.";
+                isValid = false;
+            } else if (captcha !== captchaCode) {
+                document.getElementById("captcha-error").textContent = "Incorrect CAPTCHA. Please try again.";
+                isValid = false;
+            }
+        
+            return isValid;
+        }
         </script>
         
         <form onsubmit="return validateForm()">
@@ -173,19 +181,22 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
         <script>
+            // Go back to the previous page
             function goBack() {
-                window.history.back(); 
+                window.location.href = "previous-school.html"; 
             }
         
+            // Validate the form and redirect to the submit form
             function validateAndRedirect(event) {
-                event.preventDefault(); 
+                event.preventDefault(); // Prevent default form submission
         
                 if (validateForm()) {
-                    
+                    // Redirect to the submit form if validation passes
                     window.location.href = "submit.html";
                 }
             }
         
+            // Cancel the application process (navigate to a specific page or show an alert)
             function cancelApplication() {
                 const confirmCancel = confirm("Are you sure you want to cancel the application?");
                 if (confirmCancel) {
@@ -193,12 +204,12 @@
                 }
             }
 
-            function saveConfirmationData() {
-                const examDate = document.getElementById("examDate").value;
-                localStorage.setItem("examDate", examDate);
+            function saveExamDate() {
+                const examDate = document.getElementById('examDate').value;
+                console.log("Saving exam date:", examDate); // Debug log
+                localStorage.setItem('examDate', examDate);
             }
 
         </script>    
-
     </body>
 </html>
